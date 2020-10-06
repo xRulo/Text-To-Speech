@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
       ),
-      home: MyHomePage(title: 'Text To Speech'),
+      home: MyHomePage(title: 'Text To Speech Raúl '),
     );
   }
 }
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(
               onPressed: _playVoice,
               color: Colors.lightGreen,
-              child: Text('Play Voice'),
+              child: Icon(Icons.play_arrow),
               hoverColor: Colors.green,
               textColor: Colors.white,
             ),
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(
               onPressed: _stopVoice,
               color: Colors.lightGreen,
-              child: Text('Stop Voice'),
+              child: Icon(Icons.stop),
               hoverColor: Colors.green,
               textColor: Colors.white,
             ),
