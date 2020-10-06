@@ -29,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   VoiceController _voiceController;
+  TextEditingController textController = new TextEditingController();
 
   String text =
       'This is an example tutorial of using text to speech in a flutter application! The example is provided on fluttercentral website.';
@@ -49,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _playVoice() {
     _voiceController.init().then((_) {
       _voiceController.speak(
-        text,
+        textController.text,
         VoiceControllerOptions(),
       );
     });
@@ -63,29 +64,42 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Center(child: Text(widget.title)),
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              text,
+            TextField(
+              controller: textController,
               textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.all(20.0),
+                border: InputBorder.none,
+                hintText: 'Introduce el texto a reporducir',
+                hintStyle: TextStyle(color: Colors.blueGrey)
+              ),
             ),
             SizedBox(
               height: 10,
             ),
             RaisedButton(
               onPressed: _playVoice,
-              color: Colors.blue,
+              color: Colors.lightGreen,
               child: Text('Play Voice'),
+              hoverColor: Colors.green,
+              textColor: Colors.white,
+            ),
+            SizedBox(
+              height: 10,
             ),
             RaisedButton(
               onPressed: _stopVoice,
-              color: Colors.blue,
+              color: Colors.lightGreen,
               child: Text('Stop Voice'),
+              hoverColor: Colors.green,
+              textColor: Colors.white,
             ),
           ],
         ),
